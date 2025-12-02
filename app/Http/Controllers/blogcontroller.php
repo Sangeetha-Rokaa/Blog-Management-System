@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class blogcontroller extends Controller
 {
@@ -51,6 +52,12 @@ public function login(Request $request)
 public function showLogin()
 {
     return view('login'); // make sure login.blade.php is in resources/views/auth/
+}
+
+public function logout()
+{
+    Auth::logout(); // log out the user
+    return redirect()->route('login')->with('success', 'Logged out successfully!');
 }
 
     

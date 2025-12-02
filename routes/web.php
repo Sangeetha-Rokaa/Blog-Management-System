@@ -18,7 +18,7 @@ Route::post('/login', [BlogController::class, 'login'])->name('login.submit');
 
 // User dashboard
 Route::get('/dashboard', [PostController::class, 'dashboard'])->name('posts.dashboard');
-Route::post('/dashboard/update', [PostController::class, 'update'])->name('posts.dashboard.update');
+Route::post('/dashboard', [PostController::class, 'dashboard'])->name('posts.dashboard');
 
 Route::get('/logout', [BlogController::class, 'logout'])->name('logout');
 
