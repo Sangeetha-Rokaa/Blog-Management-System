@@ -36,6 +36,22 @@ class blogcontroller extends Controller
         ]);
         return redirect()->route('admin')->with('success', 'Registration successful! You can now log in.');
     }
+public function login(Request $request)
+{
+    $credentials = $request->only('email','password');
+
+    if(Auth::attempt($credentials)) {
+        // Login successful
+        return redirect()->route('dashboard'); // or wherever you want
+    }
+
+    // Login failed
+    return back()->with('error','Invalid credentials');
+}
+public function showLogin()
+{
+    return view('login'); // make sure login.blade.php is in resources/views/auth/
+}
 
     
     public function store(Request $request)
