@@ -28,7 +28,7 @@
             <nav>
                 <a href="{{ url('/dashboard') }}" class="block py-2.5 px-4 hover:bg-blue-800 rounded">Home</a>
                 <a href="{{ url('/about') }}" class="block py-2.5 px-4 hover:bg-blue-800 rounded">About</a>
-                <a href="{{ url('/settings') }}" class="block py-2.5 px-4 hover:bg-blue-800 rounded">Settings</a>
+                
                 <a href="{{ url('/contact') }}" class="block py-2.5 px-4 hover:bg-blue-800 rounded">Contact Us</a>
                 <a href="{{ url('/logout') }}" class="block py-2.5 px-4 hover:bg-blue-800 rounded">Logout</a>
             </nav>

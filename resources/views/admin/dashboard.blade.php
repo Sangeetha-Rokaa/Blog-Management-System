@@ -50,7 +50,7 @@
         <a href="#" class="menu-link active" data-section="dashboard">🏠 Dashboard</a>
         <a href="#" class="menu-link" data-section="blogs">📃 Manage Blogs</a>
         <a href="#" class="menu-link" data-section="users">👥 Manage Users</a>
-        <a href="#" class="menu-link" data-section="settings">⚙️ Settings</a>
+       <a href="#" class="menu-link" data-section="settings">⚙️ Settings</a>
         <a href="{{ route('admin.logout') }}">🚪 Logout</a>
     </div>
 

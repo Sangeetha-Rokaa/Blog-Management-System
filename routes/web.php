@@ -41,8 +41,16 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [AdminController::class, 'login'])->name('admin.login.submit');
 
     // Protected routes (middleware can be added here)
-    Route::middleware('auth:admin')->group(function () {
+   /*Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
-    });
+    });*/
 });
+ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+        use App\Http\Controllers\PageController;
+
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+
+    
