@@ -63,7 +63,7 @@
 
         <a href="{{ route('login') }}" class="btn btn-custom btn-user">👤 User Login</a>
         <a href="{{ route ('registration') }}" class="btn btn-custom btn-register">📝 User Registration</a>
-        <a href="{{ route ('admin') }}" class="btn btn-custom btn-admin">🧑‍💼 Admin Login</a>
+        <a href="{{ route ('admin.login') }}" class="btn btn-custom btn-admin">🧑‍💼 Admin Login</a>
     </div>
 
     <footer>

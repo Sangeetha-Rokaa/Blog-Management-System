@@ -4,8 +4,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\AdminController;
 
-// -------------------- USERS --------------------
-// Show registration form
+Route::get('/',function()
+{
+return view('welcome');
+})->name('Welcome');
+
 Route::get('/registration', [BlogController::class, 'showform'])->name('registration');
 Route::post('/registration', [BlogController::class, 'registration'])->name('registration.submit');
 
@@ -15,7 +18,7 @@ Route::post('/login', [BlogController::class, 'login'])->name('login.submit');
 
 // User dashboard
 Route::get('/dashboard', [PostController::class, 'dashboard'])->name('posts.dashboard');
-Route::post('/dashboard', [PostController::class, 'dashboard'])->name('posts.dashboard');
+Route::post('/dashboard/update', [PostController::class, 'update'])->name('posts.dashboard.update');
 
 Route::get('/logout', [BlogController::class, 'logout'])->name('logout');
 
