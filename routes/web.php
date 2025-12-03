@@ -53,4 +53,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-    
+
+Route::get('/blog/publish/{id}', [BlogController::class,'publish'])->name('blog.publish');
+Route::get('/blog/unpublish/{id}', [BlogController::class,'unpublish'])->name('blog.unpublish');
+Route::get('/blog/delete/{id}', [BlogController::class,'delete'])->name('blog.delete');
+
+   Route::patch('/admin/posts/{post}/approve', [PostsController::class,'approve'])->name('posts.approve');
+Route::patch('/admin/posts/{post}/reject', [PostsController::class,'reject'])->name('posts.reject');

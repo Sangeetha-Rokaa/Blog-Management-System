@@ -9,19 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
- public function up()
+
+public function up(): void
 {
     Schema::create('posts', function (Blueprint $table) {
         $table->id();
         $table->string('title');
-        $table->string('slug')->unique();
         $table->text('body');
-        $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
+        $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
+        $table->string('slug')->unique();
         $table->string('attachment')->nullable();
+        $table->string('status')->default('pending'); // pending, approved, rejected
+        $table->boolean('is_published')->default(0);
         $table->unsignedBigInteger('views')->default(0);
         $table->timestamps();
     });
 }
+
 
 
     /**

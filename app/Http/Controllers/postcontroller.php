@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Post; // ← Add this line
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -53,5 +53,24 @@ class PostController extends Controller
     {
         $post->increment('views');
         return view('posts.show', compact('post'));
+    }
+
+    // Approve / Reject methods
+    public function approve(Post $post)
+    {
+        $post->status = 'approved';
+        $post->is_published = 1;
+        $post->save();
+
+        return back()->with('success', 'Blog Published Successfully!');
+    }
+
+    public function reject(Post $post)
+    {
+        $post->status = 'rejected';
+        $post->is_published = 0;
+        $post->save();
+
+        return back()->with('success', 'Blog Rejected!');
     }
 }

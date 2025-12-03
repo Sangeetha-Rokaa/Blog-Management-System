@@ -2,18 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-    class Post extends Model
+class Post extends Model
 {
-    protected $guarded = [];
+    use HasFactory;
 
-    public function category() { return $this->belongsTo(Category::class); }
-    public function comments() { return $this->hasMany(Comment::class); }
-    public function likes() { return $this->hasMany(Like::class); }
-    public function downloads() { return $this->hasMany(Download::class); }
-    public function shares() { return $this->hasMany(Share::class); }
+    protected $fillable = [
+        'title',
+        'body',
+        'category_id',
+        'slug',
+        'attachment',
+        'status',
+        'is_published',
+        'views'
+    ];
+
+    // Relationship with Category
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
-
-

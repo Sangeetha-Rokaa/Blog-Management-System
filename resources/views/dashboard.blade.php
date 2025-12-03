@@ -183,6 +183,8 @@
             <div class="subtitle">Explore amazing stories from our community</div>
         </div>
     </div>
+$blogs = Blog::where('is_published',1)->get();
+return view('user.index', compact('blogs'));
 
     {{-- Blog Posts Grid --}}
     @if($posts->count() > 0)

@@ -15,6 +15,35 @@ class blogcontroller extends Controller
         $blogs = blog::latest()->get();
         return view('posts.index', compact('blogs'));
     }
+    public function publish($id){
+    $blog = Blog::find($id);
+    if(!$blog) return back()->with('error','Blog not found');
+
+    $blog->is_published = 1;
+    $blog->save();
+
+    return back()->with('success','Blog Published');
+}
+
+public function unpublish($id){
+    $blog = Blog::find($id);
+    if(!$blog) return back()->with('error','Blog not found');
+
+    $blog->is_published = 0;
+    $blog->save();
+
+    return back()->with('success','Blog Unpublished');
+}
+
+public function delete($id){
+    $blog = Blog::find($id);
+    if(!$blog) return back()->with('error','Blog not found');
+
+    $blog->delete();
+
+    return back()->with('success','Blog Deleted');
+}
+
 
     public function showform()
     {
@@ -89,7 +118,24 @@ class blogcontroller extends Controller
 
     public function store(Request $request)
     {
-        // Store blog post logic here
+{
+    $post = new Post();
+    $post->title = $request->title;
+    $post->category = $request->category_id;
+    $post->body = $request->body;
+    $post->user_id = auth()->id();
+    $post->status = 'pending';     // User submission goes to admin review
+    $post->is_published = 0;       // Not visible until admin approves
+
+    if($request->hasFile('attachment')){
+        $post->attachment = $request->file('attachment')->store('attachments','public');
+    }
+
+    $post->save();
+
+    return back()->with('success', 'Blog sent for admin review!');
+}
+
     }
 
     public function show(string $id)
